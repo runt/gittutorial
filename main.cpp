@@ -8,6 +8,7 @@ int main()
     std::cout << " Hello world 4\n";
     std::cout << " Hello world 5\n";
     std::cout << " Hello world 6\n";
+    std::cout << " Hello world 7\n";
     std::cout << " promenna = " << promenna << " \n";
     std::cout << " adresa promenne = " << &promenna << " \n";
     for (size_t i = 0; i < 10; i++)
