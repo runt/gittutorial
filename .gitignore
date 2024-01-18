@@ -1,2 +1,5 @@
 build/**
 esp_example1/hello_world/build/**
+esp_example1/captive_portal/build/**
+esp_example1/restful_server/build/**
+cgold1/build/**
