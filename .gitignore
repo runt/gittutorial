@@ -3,3 +3,5 @@ esp_example1/hello_world/build/**
 esp_example1/captive_portal/build/**
 esp_example1/restful_server/build/**
 cgold1/build/**
+esp_example1/modbus_tcp_slave/mb_tcp_slave/build/**
+esp_example1/modbus_tcp_slave/mb_tcp_slave/managed_components/**
