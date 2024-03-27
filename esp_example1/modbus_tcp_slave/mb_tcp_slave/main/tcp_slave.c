@@ -165,9 +165,7 @@ static void slave_operation_func(void *arg)
 
     ESP_LOGI(TAG, "Modbus slave stack initialized.");
     ESP_LOGI(TAG, "Start modbus test...");
-    // The cycle below will be terminated when parameter holding_data0
-    // incremented each access cycle reaches the CHAN_DATA_MAX_VAL value.
-    for(;holding_reg_params.holding_data0 < MB_CHAN_DATA_MAX_VAL;) {
+    for(;;) {
         // Check for read/write events of Modbus master for certain events
         mb_event_group_t event = mbc_slave_check_event(MB_READ_WRITE_MASK);
         const char* rw_str = (event & MB_READ_MASK) ? "READ" : "WRITE";
@@ -182,15 +180,15 @@ static void slave_operation_func(void *arg)
                     (uint32_t)reg_info.type,
                     (uint32_t)reg_info.address,
                     (uint32_t)reg_info.size);
-            if (reg_info.address == (uint8_t*)&holding_reg_params.holding_data0)
-            {
-                portENTER_CRITICAL(&param_lock);
-                holding_reg_params.holding_data0 += MB_CHAN_DATA_OFFSET;
-                if (holding_reg_params.holding_data0 >= (MB_CHAN_DATA_MAX_VAL - MB_CHAN_DATA_OFFSET)) {
-                    coil_reg_params.coils_port1 = 0xFF;
-                }
-                portEXIT_CRITICAL(&param_lock);
-            }
+            // if (reg_info.address == (uint8_t*)&holding_reg_params.holding_data0)
+            // {
+            //     portENTER_CRITICAL(&param_lock);
+            //     holding_reg_params.holding_data0 += MB_CHAN_DATA_OFFSET;
+            //     if (holding_reg_params.holding_data0 >= (MB_CHAN_DATA_MAX_VAL - MB_CHAN_DATA_OFFSET)) {
+            //         coil_reg_params.coils_port1 = 0xFF;
+            //     }
+            //     portEXIT_CRITICAL(&param_lock);
+            // }
         } else if (event & MB_EVENT_INPUT_REG_RD) {
             ESP_ERROR_CHECK(mbc_slave_get_param_info(&reg_info, MB_PAR_INFO_GET_TOUT));
             ESP_LOGI(TAG, "INPUT READ (%u us), ADDR:%u, TYPE:%u, INST_ADDR:0x%.4x, SIZE:%u",

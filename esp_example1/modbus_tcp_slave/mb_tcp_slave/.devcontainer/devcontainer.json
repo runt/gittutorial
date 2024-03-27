@@ -24,7 +24,8 @@
 				"idf.gitPath": "/usr/bin/git"
 			},
 			"extensions": [
-				"espressif.esp-idf-extension"
+				"espressif.esp-idf-extension",
+				"masuidrive.vsc-esp-updater"
 			],
 		},
 		"codespaces": {

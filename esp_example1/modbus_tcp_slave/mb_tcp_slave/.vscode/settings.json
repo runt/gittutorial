@@ -2,6 +2,10 @@
   "C_Cpp.intelliSenseEngine": "default",
   "idf.adapterTargetName": "esp32",
   "files.associations": {
-    "protocol_examples_common.h": "c"
-  }
+    "protocol_examples_common.h": "c",
+    "modbus_params.h": "c"
+  },
+  "idf.openOcdConfigs": [
+    "board/esp32-wrover-kit-3.3v.cfg"
+  ]
 }
